@@ -23,7 +23,9 @@ export class AuthService {
       const payload: JWTPayload = { 
         userId: user2._id,
         userMail: user2.email, 
-        userName: `${user2.first_name} ${user2.last_name}`
+        userName: `${user2.first_name} ${user2.last_name}`,
+        menu: (type === 'USER') ? user2.menu : [],
+        type_user: type
       };
       return {
         access_token: this.jwtService.sign(payload),

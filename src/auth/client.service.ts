@@ -10,7 +10,7 @@ export class ClientService {
     constructor(private httpService: HttpService) {}
 
     findByEmail(email: string, type: string): Observable<any> {
-        const url = type === 'CLIENT' ? 'http://localhost:3001/api/v1/client' : 'http://localhost:3001/api/v1/user';
+        const url = type === 'CLIENT' ? 'http://localhost:3001/api/v1/client' : 'http://localhost:3002/api/v1/user/email';
         return this.httpService.get(`${url}/${email}`).pipe(
             map(response => response.data)
         );
@@ -21,7 +21,7 @@ export class ClientService {
             email: email,
             pass: password
         };
-        const url = type === 'CLIENT' ? 'http://localhost:3001/api/v1/client' : 'http://localhost:3001/api/v1/user';
+        const url = type === 'CLIENT' ? 'http://localhost:3001/api/v1/client' : 'http://localhost:3002/api/v1/user';
         return this.httpService.post(`${url}/validate`, body).pipe(
             map(response => response.data)
         );
